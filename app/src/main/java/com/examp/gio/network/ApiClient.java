@@ -1,4 +1,4 @@
-package com.examp.gio;
+package com.examp.gio.network;
 
 import java.io.*;
 import java.net.HttpURLConnection;

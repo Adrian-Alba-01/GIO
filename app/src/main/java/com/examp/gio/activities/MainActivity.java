@@ -1,4 +1,4 @@
-package com.examp.gio;
+package com.examp.gio.activities;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.examp.gio.R;
 
 public class MainActivity extends AppCompatActivity {
 
