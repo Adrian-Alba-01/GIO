@@ -1,0 +1,44 @@
+package com.examp.gio;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class ApiClient {
+
+    public static String post(String urlString, String data) {
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+
+            OutputStream os = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(os, "UTF-8"));
+
+            writer.write(data);
+            writer.flush();
+            writer.close();
+            os.close();
+
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()));
+
+            StringBuilder result = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+
+            reader.close();
+            return result.toString();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "ERROR";
+        }
+    }
+}
