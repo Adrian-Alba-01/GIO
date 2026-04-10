@@ -6,14 +6,17 @@ import java.net.URL;
 
 public class ApiClient {
 
-    public static String post(String urlString, String data) {
+    // Cambia esto a la IP de tu servidor si no usas el emulador
+    private static final String BASE_URL = "http://10.0.2.2/GIO/api";
+
+    public static String post(String endpoint, String data) {
         try {
-            URL url = new URL(urlString);
+            URL url = new URL(BASE_URL + endpoint);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             conn.setConnectTimeout(10000);
             conn.setReadTimeout(10000);
 
@@ -29,11 +32,13 @@ public class ApiClient {
             int responseCode = conn.getResponseCode();
 
             InputStream is;
-            if (responseCode == HttpURLConnection.HTTP_OK) {
+            if (responseCode >= 200 && responseCode < 300) {
                 is = conn.getInputStream();
             } else {
                 is = conn.getErrorStream();
             }
+
+            if (is == null) return "{}";
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder result = new StringBuilder();
@@ -48,7 +53,7 @@ public class ApiClient {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "ERROR";
+            return "{\"success\": false, \"message\": \"Error de conexión\"}";
         }
     }
 }
