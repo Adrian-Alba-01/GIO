@@ -13,6 +13,7 @@ public class ApiClient {
 
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
@@ -23,9 +24,16 @@ public class ApiClient {
             writer.close();
             os.close();
 
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(conn.getInputStream()));
+            int responseCode = conn.getResponseCode();
 
+            InputStream is;
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                is = conn.getInputStream();
+            } else {
+                is = conn.getErrorStream();
+            }
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder result = new StringBuilder();
             String line;
 
