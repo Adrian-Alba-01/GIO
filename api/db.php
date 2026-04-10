@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json");
 
-$host = "192.168.1.1";
+$host = "";
 $user = "root";
 $pass = "";
 $db   = "GIO";
