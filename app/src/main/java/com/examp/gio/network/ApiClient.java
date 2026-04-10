@@ -14,6 +14,8 @@ public class ApiClient {
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setConnectTimeout(10000);
+            conn.setReadTimeout(10000);
 
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
