@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4FF">
+
+    <!-- ===== BARRA DE NAVEGACIÓN INFERIOR (anclada al fondo) ===== -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:background="#013276"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:elevation="8dp">
+
+        <LinearLayout
+            android:id="@+id/navInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_today"
+                android:tint="#FFFFFF"
+                android:contentDescription="Inicio"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navObras"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_mapmode"
+                android:tint="#9AB4E8"
+                android:contentDescription="Obras"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navPersonal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_manage"
+                android:tint="#9AB4E8"
+                android:contentDescription="Personal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navDocumentos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_agenda"
+                android:tint="#9AB4E8"
+                android:contentDescription="Documentos"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navPerfil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_myplaces"
+                android:tint="#9AB4E8"
+                android:contentDescription="Perfil"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#013276"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="48dp"
+                android:paddingBottom="24dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvBienvenido"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="¡Bienvenido Adrian!"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/ivCampana"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_dialog_info"
+                    android:tint="#FFFFFF"
+                    android:contentDescription="Notificaciones"/>
+            </LinearLayout>
+
+            <!-- CUERPO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp">
+
+                <!-- Título Resumen general -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resumen general"
+                    android:textColor="#013276"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Tarjeta Resumen general -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_blue"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="20dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="8dp">
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/circle_white" android:layout_marginEnd="10dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Obras activas : 2" android:textColor="#FFFFFF" android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="8dp">
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/circle_white" android:layout_marginEnd="10dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Trabajadores activos : 18" android:textColor="#FFFFFF" android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="8dp">
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/circle_white" android:layout_marginEnd="10dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Incidencias : 2" android:textColor="#FFFFFF" android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/circle_white" android:layout_marginEnd="10dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Solicitudes : 2" android:textColor="#FFFFFF" android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Título Obras activas -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Obras activas"
+                        android:textColor="#013276"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_menu_sort_by_size"
+                        android:tint="#013276"
+                        android:contentDescription="Filtrar obras"/>
+                </LinearLayout>
+
+                <!-- Tarjeta Obras activas -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_blue"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="20dp">
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/circle_white" android:layout_marginEnd="10dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Edificio C. Comandante..." android:textColor="#FFFFFF" android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="10dp">
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/circle_white" android:layout_marginEnd="10dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nave industrial" android:textColor="#FFFFFF" android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <View android:layout_width="10dp" android:layout_height="10dp" android:background="@drawable/circle_white" android:layout_marginEnd="10dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hospital Avenida de..." android:textColor="#FFFFFF" android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Título Más apartados -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Mas apartados"
+                        android:textColor="#013276"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_menu_slideshow"
+                        android:tint="#013276"
+                        android:contentDescription="Ver todos los apartados"/>
+                </LinearLayout>
+
+                <!-- 3 BOTONES: mismo alto forzado con android:lines="2" en todos -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:layout_marginBottom="20dp">
+
+                    <!-- Solicitudes pendientes -->
+                    <LinearLayout
+                        android:id="@+id/btnSolicitudes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_card_blue"
+                        android:padding="14dp"
+                        android:layout_marginEnd="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@android:drawable/ic_menu_agenda"
+                            android:tint="#FFFFFF"
+                            android:contentDescription="Solicitudes pendientes"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Solicitudes\npendientes"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:layout_marginTop="6dp"/>
+                    </LinearLayout>
+
+                    <!-- Personal activo -->
+                    <LinearLayout
+                        android:id="@+id/btnPersonal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_card_blue"
+                        android:padding="14dp"
+                        android:layout_marginEnd="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@android:drawable/ic_menu_myplaces"
+                            android:tint="#FFFFFF"
+                            android:contentDescription="Personal activo"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Personal\nactivo"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:layout_marginTop="6dp"/>
+                    </LinearLayout>
+
+                    <!-- Incidencias -->
+                    <LinearLayout
+                        android:id="@+id/btnIncidencias"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_card_blue"
+                        android:padding="14dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@android:drawable/ic_dialog_alert"
+                            android:tint="#FFFFFF"
+                            android:contentDescription="Incidencias"/>
+
+                        <!-- lines="2" iguala la altura con los otros botones -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Incidencias"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:layout_marginTop="6dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- BOTÓN CALENDARIO -->
+                <Button
+                    android:id="@+id/btnCalendario"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Calendario"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#013276"
+                    android:layout_marginBottom="16dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
