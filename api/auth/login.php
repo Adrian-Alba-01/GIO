@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: ");
+header("Access-Control-Allow-Origin: *");
 
 require_once "../config/db.php";
 
@@ -17,32 +17,40 @@ if ($email === "" || $contrasena === "") {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT FROM usuario WHERE email = ?");
-$stmt->execute([$email]);
-$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+try {
+    $stmt = $pdo->prepare("SELECT * FROM usuario WHERE email = ?");
+    $stmt->execute([$email]);
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$usuario) {
+    if (!$usuario) {
+        echo json_encode([
+            "success" => false,
+            "message" => "Usuario no encontrado"
+        ]);
+        exit;
+    }
+
+    // Comparación simple (se recomienda usar password_verify en el futuro)
+    if ($usuario["contrasena"] !== $contrasena) {
+        echo json_encode([
+            "success" => false,
+            "message" => "Contraseña incorrecta"
+        ]);
+        exit;
+    }
+
+    echo json_encode([
+        "success" => true,
+        "usuario" => [
+            "id_usuario" => $usuario["id_usuario"],
+            "nombre" => $usuario["nombre"],
+            "email" => $usuario["email"],
+            "rol" => $usuario["rol"]
+        ]
+    ]);
+} catch (PDOException $e) {
     echo json_encode([
         "success" => false,
-        "message" => "Usuario no encontrado"
+        "message" => "Error en la consulta: " . $e->getMessage()
     ]);
-    exit;
 }
-
-if ($usuario["contrasena"] !== $contrasena) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Contraseña incorrecta"
-    ]);
-    exit;
-}
-
-echo json_encode([
-    "success" => true,
-    "usuario" => [
-        "id_usuario" => $usuario["id_usuario"],
-        "nombre" => $usuario["nombre"],
-        "email" => $usuario["email"],
-        "rol" => $usuario["rol"]
-    ]
-]);
