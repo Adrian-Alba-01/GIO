@@ -25,6 +25,18 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.EmpleadoHomeActivity" />
+        <activity android:name=".activities.EncargadoHomeActivity" />
+        <activity android:name=".activities.ObrasActivity" />
+        <activity android:name=".activities.EquipoActivity" />
+        <activity android:name=".activities.PerfilActivity" />
+        <activity android:name=".activities.TareasActivity" />
+        <activity android:name=".activities.CalendarioActivity" />
+        <activity android:name=".activities.IncidenciasActivity" />
+        <activity android:name=".activities.TareasEquipoActivity" />
+        <activity android:name=".activities.HorasMensualesActivity" />
+
     </application>
 
 </manifest>
