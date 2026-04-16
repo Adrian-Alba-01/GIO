@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#1A2A6C"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Indicador de color estado -->
+    <View
+        android:id="@+id/viewIndicadorTarea"
+        android:layout_width="4dp"
+        android:layout_height="match_parent"
+        android:background="#4CAF50"
+        android:layout_marginEnd="12dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNombreTarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre tarea"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDescripcionTarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:textColor="#AAAAAA"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvFechasTarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha inicio → Fecha fin"
+            android:textColor="#AAAAAA"
+            android:textSize="11sp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvEstadoTarea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pendiente"
+        android:textSize="11sp"
+        android:layout_gravity="center_vertical" />
+
+</LinearLayout>
