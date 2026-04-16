@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#001B60">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvBienvenido"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="¡Bienvenido Usuario!"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivNotificaciones"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@android:drawable/ic_dialog_info"
+            android:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Tarjeta fichaje -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#0033AA"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvReloj"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="00:00:00"
+                            android:textColor="#FFFFFF"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvEstadoFichaje"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● Inactivo"
+                            android:textColor="#FFC107"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvDireccion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cargando obra..."
+                            android:textColor="#AAAAFF"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnFichar"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@android:color/transparent"
+                        android:text="◉"
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnHorasMensuales"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Horas mensuales"
+                android:textColor="#FFFFFF"
+                android:background="#0044CC"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Estado del equipo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Estado del equipo 👥"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEquipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <Button
+                android:id="@+id/btnVerEquipo"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Ver todos"
+                android:textColor="#FFFFFF"
+                android:background="#0044CC"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Más apartados -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mas apartados 🔳"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:rowCount="1">
+
+                <Button
+                    android:id="@+id/navTareas"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:text="Tareas"
+                    android:textColor="#FFFFFF"
+                    android:background="#0033AA"
+                    android:layout_margin="4dp" />
+
+                <Button
+                    android:id="@+id/navTareasEquipo"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:text="Tareas\nequipo"
+                    android:textColor="#FFFFFF"
+                    android:background="#0033AA"
+                    android:layout_margin="4dp" />
+
+                <Button
+                    android:id="@+id/navIncidencias"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:text="Incidencias"
+                    android:textColor="#FFFFFF"
+                    android:background="#0033AA"
+                    android:layout_margin="4dp" />
+            </GridLayout>
+
+            <Button
+                android:id="@+id/navCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Calendario"
+                android:textColor="#FFFFFF"
+                android:background="#0044CC"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- BOTTOM NAVIGATION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="#001B60"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/navInicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_today"
+            android:tint="#FFFFFF"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:id="@+id/navEquipoBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_my_calendar"
+            android:tint="#AAAAFF"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:id="@+id/navPerfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_myplaces"
+            android:tint="#AAAAFF"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,39 +1,39 @@
 <?php
+// api/auth/login.php
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
+require_once "../db.php";
 
-require_once "../config/db.php";
-
-// Leer json
 $data = json_decode(file_get_contents("php://input"), true);
-$email      = $data["email"] ?? "";
-$contrasena = $data["contrasena"] ?? "";
+$email     = trim($data["email"] ?? "");
+$contrasena = trim($data["contrasena"] ?? "");
 
-// Validar que no vengan vacíos
 if (empty($email) || empty($contrasena)) {
-    echo json_encode(["success" => false, "message" => "Campos vacíos"]);
+    echo json_encode(["success" => false, "message" => "Campos requeridos"]);
     exit;
 }
 
-// Consulta segura con prepared statement
-$stmt = $conn->prepare("SELECT id_usuario, nombre, email, rol, contrasena FROM usuario WHERE email = ?");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
+$stmt = $pdo->prepare("SELECT * FROM usuario WHERE email = ?");
+$stmt->execute([$email]);
+$usuario = $stmt->fetch();
 
-if ($result->num_rows === 1) {
-    $row = $result->fetch_assoc();
-
-    if ($contrasena === $row["contrasena"]) {
-        unset($row["contrasena"]); 
-        echo json_encode(["success" => true, "usuario" => $row]);
-    } else {
-        echo json_encode(["success" => false, "message" => "Contraseña incorrecta"]);
-    }
-} else {
+if (!$usuario) {
     echo json_encode(["success" => false, "message" => "Usuario no encontrado"]);
+    exit;
 }
 
-$stmt->close();
-$conn->close();
-?>
+// Comparación directa (en producción usar password_verify con password_hash)
+if ($usuario["contrasena"] !== $contrasena) {
+    echo json_encode(["success" => false, "message" => "Contraseña incorrecta"]);
+    exit;
+}
+
+echo json_encode([
+    "success" => true,
+    "usuario" => [
+        "id_usuario" => $usuario["id_usuario"],
+        "nombre"     => $usuario["nombre"],
+        "email"      => $usuario["email"],
+        "rol"        => $usuario["rol"]
+    ]
+]);
