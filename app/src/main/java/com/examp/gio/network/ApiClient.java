@@ -6,8 +6,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class ApiClient {
-
-    // Cambia esto a la IP de tu servidor si no usas el emulador
     private static final String BASE_URL = "http://10.0.2.2/GIO/GIO/api";
 
     public static String post(String endpoint, String data) {
