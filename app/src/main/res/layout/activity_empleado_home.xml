@@ -199,9 +199,11 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Cargando obra..."
-                                android:textColor="#CCDDFF"
-                                android:textSize="13sp"/>
+                                android:text="Cargando ubicación..."
+                                android:textColor="#D6E4FF"
+                                android:textSize="14sp"
+                                android:maxLines="2"
+                                android:ellipsize="end"/>
 
                             <ImageView
                                 android:id="@+id/ivUbicacion"
