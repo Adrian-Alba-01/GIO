@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/item_ver_mas_tareas.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingVertical="4dp"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvVerMasTareas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver más"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="8dp"
+        android:background="@drawable/bg_ver_mas"
+        android:clickable="true"
+        android:focusable="true" />
+
+</LinearLayout>

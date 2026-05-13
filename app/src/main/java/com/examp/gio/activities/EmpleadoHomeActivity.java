@@ -45,8 +45,8 @@ public class EmpleadoHomeActivity extends AppCompatActivity {
             ivUbicacion,
             ivPerfil;
 
-    Button btnFichar,
-            btnHorasMensuales,
+    ImageView btnFichar;
+    Button btnHorasMensuales,
             btnVerTodas;
 
     RecyclerView rvTareaActual,
@@ -185,6 +185,12 @@ public class EmpleadoHomeActivity extends AppCompatActivity {
         adapterPendientes = new TareaAdapter(tareasPendientes, false);
         rvTareasPendientes.setLayoutManager(new LinearLayoutManager(this));
         rvTareasPendientes.setAdapter(adapterPendientes);
+
+        adapterActual.setOnCompletarListener((idTarea, position) ->
+                completarTarea(idTarea, position, tareasActuales, adapterActual));
+
+        adapterPendientes.setOnCompletarListener((idTarea, position) ->
+                completarTarea(idTarea, position, tareasPendientes, adapterPendientes));
     }
 
     // ==========================================
@@ -413,16 +419,24 @@ public class EmpleadoHomeActivity extends AppCompatActivity {
                 activo ? R.color.verde : R.color.amarillo, null
         ));
 
-        btnFichar.setText(activo ? "Registrar Salida" : "Registrar Entrada");
-
         if (activo) {
-            tiempoInicio = System.currentTimeMillis();
+            // Rojo suave = "puedo salir"
+            btnFichar.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+            btnFichar.setBackgroundTintList(
+                android.content.res.ColorStateList.valueOf(
+                    android.graphics.Color.parseColor("#CC2222")
+                )
+            );
+            btnFichar.setColorFilter(android.graphics.Color.WHITE);
         } else {
-            tiempoInicio    = 0;
-            tiempoAcumulado = 0;
-            pausaActiva     = false;
-            tvReloj.setText("00:00:00");
-            ivFotos.setImageResource(android.R.drawable.ic_media_pause);
+            // Azul = "puedo entrar"
+            btnFichar.setImageResource(android.R.drawable.ic_menu_directions);
+            btnFichar.setBackgroundTintList(
+                android.content.res.ColorStateList.valueOf(
+                    android.graphics.Color.parseColor("#FFFFFF")
+                )
+            );
+            btnFichar.setColorFilter(android.graphics.Color.parseColor("#013276"));
         }
     }
 
@@ -487,5 +501,32 @@ public class EmpleadoHomeActivity extends AppCompatActivity {
         if (runnableUbicacion != null) {
             handlerUbicacion.removeCallbacks(runnableUbicacion);
         }
+    }
+    private void completarTarea(int idTarea, int position,
+                                List<Tarea> lista, TareaAdapter adapter) {
+        executor.execute(() -> {
+            try {
+                JSONObject body = new JSONObject();
+                body.put("id_tarea", idTarea);
+                body.put("id_usuario", idUsuario);
+
+                String res = ApiClient.post("/empleado/completar_tarea.php", body.toString());
+                JSONObject json = new JSONObject(res);
+
+                runOnUiThread(() -> {
+                    if (json.optBoolean("success")) {
+                        lista.get(position).estado = "completada";
+                        adapter.notifyItemChanged(position);
+                        Toast.makeText(this, "Tarea completada", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this,
+                                json.optString("message", "Error"),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

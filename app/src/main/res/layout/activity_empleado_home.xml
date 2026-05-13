@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#F0F4FF">
 
-    <!-- ===== BARRA DE NAVEGACIÓN INFERIOR (4 iconos) ===== -->
+    <!-- ===== BARRA DE NAVEGACIÓN INFERIOR ===== -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -16,7 +16,6 @@
         android:gravity="center"
         android:elevation="8dp">
 
-        <!-- Inicio (activo, blanco) -->
         <LinearLayout
             android:id="@+id/navInicio"
             android:layout_width="0dp"
@@ -34,7 +33,6 @@
                 android:contentDescription="Inicio"/>
         </LinearLayout>
 
-        <!-- Ubicación/Obras -->
         <LinearLayout
             android:id="@+id/navUbicacion"
             android:layout_width="0dp"
@@ -52,7 +50,6 @@
                 android:contentDescription="Ubicación"/>
         </LinearLayout>
 
-        <!-- Tareas -->
         <LinearLayout
             android:id="@+id/navTareas"
             android:layout_width="0dp"
@@ -70,7 +67,6 @@
                 android:contentDescription="Tareas"/>
         </LinearLayout>
 
-        <!-- Perfil -->
         <LinearLayout
             android:id="@+id/navPerfil"
             android:layout_width="0dp"
@@ -176,7 +172,6 @@
                                 android:textSize="24sp"
                                 android:textStyle="bold"/>
 
-                            <!-- Punto de estado (verde/amarillo según fichaje) -->
                             <TextView
                                 android:id="@+id/tvEstadoFichaje"
                                 android:layout_width="wrap_content"
@@ -215,14 +210,14 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Botones a la derecha: Parar + Fotos -->
+                    <!-- ===== COLUMNA DERECHA: 3 botones apilados ===== -->
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
 
-                        <!-- Botón parar (btnFichar actúa como fichar/desfichar,
-                             este es solo el icono visual de parar) -->
+                        <!-- Botón pausa -->
                         <ImageView
                             android:id="@+id/ivFotos"
                             android:layout_width="48dp"
@@ -234,21 +229,23 @@
                             android:layout_marginBottom="8dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:contentDescription="Parar"/>
+                            android:contentDescription="Pausa"/>
 
-                        <!-- Botón fotos/cambiar -->
+                        <!-- Botón fichar (entrada/salida) -->
                         <ImageView
-                            android:id="@+id/ivPerfil"
+                            android:id="@+id/btnFichar"
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@android:drawable/ic_menu_camera"
+                            android:src="@android:drawable/ic_menu_directions"
                             android:tint="#013276"
                             android:background="@drawable/bg_btn_square"
                             android:padding="10dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:contentDescription="Fotos"/>
+                            android:contentDescription="Registrar entrada"/>
+
                     </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -279,7 +276,7 @@
                     android:background="#CCCCCC"
                     android:layout_marginBottom="14dp"/>
 
-                <!-- Título Tarea Actual + icono -->
+                <!-- Título Tarea Actual -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -304,8 +301,6 @@
                         android:contentDescription="Tarea actual"/>
                 </LinearLayout>
 
-                <!-- RecyclerView Tarea Actual -->
-                <!-- nestedScrollingEnabled="false" para que funcione dentro del ScrollView -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvTareaActual"
                     android:layout_width="match_parent"
@@ -320,7 +315,7 @@
                     android:background="#CCCCCC"
                     android:layout_marginBottom="14dp"/>
 
-                <!-- Título Tareas Pendientes + icono -->
+                <!-- Título Tareas Pendientes -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -345,7 +340,6 @@
                         android:contentDescription="Tareas pendientes"/>
                 </LinearLayout>
 
-                <!-- RecyclerView Tareas Pendientes -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvTareasPendientes"
                     android:layout_width="match_parent"
@@ -353,7 +347,6 @@
                     android:nestedScrollingEnabled="false"
                     android:layout_marginBottom="16dp"/>
 
-                <!-- Botón Ver todas -->
                 <Button
                     android:id="@+id/btnVerTodas"
                     android:layout_width="wrap_content"
@@ -365,19 +358,6 @@
                     android:backgroundTint="#2255CC"
                     android:layout_gravity="center_horizontal"
                     android:paddingHorizontal="32dp"
-                    android:layout_marginBottom="16dp"/>
-
-                <!-- Botón Fichar (oculto visualmente en el diseño,
-                     pero necesario para el Java — se activa desde tvEstadoFichaje area) -->
-                <Button
-                    android:id="@+id/btnFichar"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="Registrar Entrada"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:backgroundTint="#013276"
                     android:layout_marginBottom="16dp"/>
 
             </LinearLayout>
